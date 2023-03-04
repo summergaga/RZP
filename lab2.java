@@ -22,27 +22,8 @@ public class lab2 {
                     while (num1) {
                         System.out.println("Position is: " + line);
                         System.out.println("Enter direction (w - up, a - left, s - down, d - right, q - quit):");
-                        String Direction = scanner1.nextLine();
-                        switch (Direction) {
-                            case "w":
-                                line.moveUp();
-                                break;
-                            case "a":
-                                line.moveLeft();
-                                break;
-                            case "s":
-                                line.moveDown();
-                                break;
-                            case "d":
-                                line.moveRight();
-                                break;
-                            case "q":
-                                num1 = false;
-                                break;
-                            default:
-                                System.out.println("No such direction.");
-                                break;
-                        }
+                        String dir = scanner1.nextLine();
+                        num1 = shift(selector, dir);
                     }
                     break;
                 case 2:
@@ -52,27 +33,8 @@ public class lab2 {
                     while (num2) {
                         System.out.println("Position is: " + rectangle);
                         System.out.println("Enter direction (w - up, a - left, s - down, d - right, q - quit):");
-                        String Direction = scanner2.nextLine();
-                        switch (Direction) {
-                            case "w":
-                                rectangle.moveUp();
-                                break;
-                            case "a":
-                                rectangle.moveLeft();
-                                break;
-                            case "s":
-                                rectangle.moveDown();
-                                break;
-                            case "d":
-                                rectangle.moveRight();
-                                break;
-                            case "q":
-                                num2 = false;
-                                break;
-                            default:
-                                System.out.println("No such direction.");
-                                break;
-                        }
+                        String dir = scanner2.nextLine();
+                        num2 = shift(selector, dir);
                     }
                     break;
                 case 3:
@@ -82,27 +44,8 @@ public class lab2 {
                     while (num3) {
                         System.out.println("Position is: " + circle);
                         System.out.println("Enter direction (w - up, a - left, s - down, d - right, q - quit):");
-                        String Direction = scanner3.nextLine();
-                        switch (Direction) {
-                            case "w":
-                                circle.moveUp();
-                                break;
-                            case "a":
-                                circle.moveLeft();
-                                break;
-                            case "s":
-                                circle.moveDown();
-                                break;
-                            case "d":
-                                circle.moveRight();
-                                break;
-                            case "q":
-                                num3 = false;
-                                break;
-                            default:
-                                System.out.println("No such direction.");
-                                break;
-                        }
+                        String dir = scanner3.nextLine();
+                        num3 = shift(selector, dir);
                     }
                     break;
                 case 0:
@@ -220,5 +163,74 @@ public class lab2 {
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + filename);
         }
+    }
+    private static boolean shift(int figure, String dir){
+        if (figure == 1)
+        {
+            switch (dir) {
+                case "w":
+                    line.moveUp();
+                    break;
+                case "a":
+                    line.moveLeft();
+                    break;
+                case "s":
+                    line.moveDown();
+                    break;
+                case "d":
+                    line.moveRight();
+                    break;
+                case "q":
+                    return false;
+                default:
+                    System.out.println("No such direction.");
+                    break;
+            }
+        }
+        if (figure == 2)
+        {
+            switch (dir) {
+                case "w":
+                    rectangle.moveUp();
+                    break;
+                case "a":
+                    rectangle.moveLeft();
+                    break;
+                case "s":
+                    rectangle.moveDown();
+                    break;
+                case "d":
+                    rectangle.moveRight();
+                    break;
+                case "q":
+                    return false;
+                default:
+                    System.out.println("No such direction.");
+                    break;
+            }
+        }
+        if (figure == 3)
+        {
+            switch (dir) {
+                case "w":
+                    circle.moveUp();
+                    break;
+                case "a":
+                    circle.moveLeft();
+                    break;
+                case "s":
+                    circle.moveDown();
+                    break;
+                case "d":
+                    circle.moveRight();
+                    break;
+                case "q":
+                    return false;
+                default:
+                    System.out.println("No such direction.");
+                    break;
+            }
+        }
+        return true;
     }
 }
